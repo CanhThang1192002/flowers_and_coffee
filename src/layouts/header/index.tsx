@@ -122,6 +122,10 @@ const Header = () => {
           sx={{ justifyContent: "space-between", height: `${headerHeight}px` }}
         >
           <Box
+            onClick={() => {
+              navigate("/");
+              dispatch(setCurrentPage(""));
+            }}
             sx={{
               height: headerHeight,
               display: "flex",
@@ -167,7 +171,10 @@ const Header = () => {
 
             {/* Cart Button */}
             <CartButton
-              onClick={() => navigate("/payment")}
+              onClick={() => {
+                navigate("/payment");
+                dispatch(setCurrentPage(""));
+              }}
               sx={{ marginTop: "10px" }}
               startIcon={
                 <Badge badgeContent={cartItemCount} color="error">
