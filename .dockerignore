@@ -1,0 +1,17 @@
+node_modules
+
+dist
+build
+
+.env.local
+.env.development
+.env.test
+
+.git
+.gitignore
+
+.idea
+.vscode
+
+npm-debug.log
+yarn-error.log
