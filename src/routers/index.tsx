@@ -16,6 +16,7 @@ const AboutPage = Loadable(lazy(() => import("../pages/about")));
 const ContactForm = Loadable(lazy(() => import("../pages/contact")));
 const BlogPage = Loadable(lazy(() => import("../pages/blog")));
 const BlogPostDetail = Loadable(lazy(() => import("../pages/blog/BlogDetail")));
+const PaymentForm = Loadable(lazy(() => import("../pages/payment")));
 
 const AuthenticationRouter = {
   path: "/auth",
@@ -71,6 +72,10 @@ const MainRouter = {
     {
       path: "blog/detail",
       element: <BlogPostDetail />,
+    },
+    {
+      path: "payment",
+      element: <PaymentForm />,
     },
   ],
 };

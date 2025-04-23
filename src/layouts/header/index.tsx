@@ -8,15 +8,16 @@ import {
   Badge,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.jpg";
 import { headerHeight } from "../../stores/Constant";
 import MenuItems from "../../routers/menus";
 import { useAppSelector, useAppDispatch } from "../../stores/hooks";
 import { setCurrentPage } from "../../stores/reducers/Customization";
+import logo from "../../assets/logo.jpg";
 
 // Search component
 const Search = styled("div")(({ theme }) => ({
@@ -106,6 +107,7 @@ const CartButton = styled(Button)(({ theme }) => ({
 }));
 
 const Header = () => {
+  const navigate = useNavigate();
   const cartItemCount = 0;
   const currentPage = useAppSelector(
     (state) => state.Customization.currentPage
@@ -165,6 +167,7 @@ const Header = () => {
 
             {/* Cart Button */}
             <CartButton
+              onClick={() => navigate("/payment")}
               sx={{ marginTop: "10px" }}
               startIcon={
                 <Badge badgeContent={cartItemCount} color="error">
