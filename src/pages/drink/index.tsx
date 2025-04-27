@@ -9,14 +9,19 @@ import {
   Pagination,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router-dom";
 import bannerImage from "../../assets/banner_drink.png";
 import drink1 from "../../assets/drink1.png";
 import drink2 from "../../assets/drink2.png";
 import drink3 from "../../assets/drink3.png";
 import drink4 from "../../assets/drink4.png";
 import "../styles/FontStyle.scss";
+import { useAppDispatch } from "../../stores/hooks";
+import { setDrinkDetail } from "../../stores/reducers/Drink";
 
 const DrinkShopPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   // Sample drink data
   const drinkItems = [
     {
@@ -44,6 +49,11 @@ const DrinkShopPage = () => {
       price: "50.000đ",
     },
   ];
+
+  const handleClickDrink = (index: number) => {
+    dispatch(setDrinkDetail(drinkItems[index % 4]));
+    navigate("/drink/detail");
+  };
 
   const displaydrinks = Array(5).fill(drinkItems).flat();
 
@@ -132,6 +142,7 @@ const DrinkShopPage = () => {
                   }}
                 >
                   <Button
+                    onClick={() => handleClickDrink(index)}
                     fullWidth
                     variant="contained"
                     size="small"

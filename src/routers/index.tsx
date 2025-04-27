@@ -17,6 +17,12 @@ const ContactForm = Loadable(lazy(() => import("../pages/contact")));
 const BlogPage = Loadable(lazy(() => import("../pages/blog")));
 const BlogPostDetail = Loadable(lazy(() => import("../pages/blog/BlogDetail")));
 const PaymentForm = Loadable(lazy(() => import("../pages/payment")));
+const FlowerDetailPage = Loadable(
+  lazy(() => import("../pages/flower/FlowerDetail"))
+);
+const DrinkDetailPage = Loadable(
+  lazy(() => import("../pages/drink/DrinkDetail"))
+);
 
 const AuthenticationRouter = {
   path: "/auth",
@@ -46,8 +52,16 @@ const MainRouter = {
       element: <FlowerShopPage />,
     },
     {
+      path: "flower/detail",
+      element: <FlowerDetailPage />,
+    },
+    {
       path: "drink",
       element: <DrinkShopPage />,
+    },
+    {
+      path: "drink/detail",
+      element: <DrinkDetailPage />,
     },
     {
       path: "workshop",

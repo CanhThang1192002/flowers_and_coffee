@@ -1,6 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import Customization from "./reducers/Customization";
 import Authentication from "./reducers/Authentication";
+import Flower from "./reducers/Flower";
+import Drink from "./reducers/Drink";
 import {
   persistStore,
   persistReducer,
@@ -22,6 +24,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   Customization: Customization,
   Authentication: Authentication,
+  Flower: Flower,
+  Drink: Drink,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

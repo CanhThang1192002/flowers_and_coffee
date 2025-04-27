@@ -9,14 +9,19 @@ import {
   Pagination,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router-dom";
 import bannerImage from "../../assets/banner_flower.png";
 import flower1 from "../../assets/flower1.png";
 import flower2 from "../../assets/flower2.png";
 import flower3 from "../../assets/flower3.png";
 import flower4 from "../../assets/flower4.png";
 import "../styles/FontStyle.scss";
+import { useAppDispatch } from "../../stores/hooks";
+import { setFlowerDetail } from "../../stores/reducers/Flower";
 
 const FlowerShopPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   // Sample flower data
   const flowerItems = [
     {
@@ -47,6 +52,11 @@ const FlowerShopPage = () => {
 
   // Create a repeated array for display purposes (5 rows of 4 items)
   const displayFlowers = Array(5).fill(flowerItems).flat();
+
+  const handleClickFlower = (index: number) => {
+    dispatch(setFlowerDetail(flowerItems[index % 4]));
+    navigate("/flower/detail");
+  };
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -133,6 +143,7 @@ const FlowerShopPage = () => {
                   }}
                 >
                   <Button
+                    onClick={() => handleClickFlower(index)}
                     fullWidth
                     variant="contained"
                     size="small"
